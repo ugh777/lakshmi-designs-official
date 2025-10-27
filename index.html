@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Lakshmi Stitching Center</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+    
+    <style>
+        /* --- 1. Basic Reset & Setup --- */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body {
+            font-family: 'Poppins', sans-serif;
+            line-height: 1.6;
+            color: #333;
+        }
+
+        /* --- 2. Video Background --- */
+        #video-bg {
+            position: fixed; /* Stays in place */
+            top: 50%;
+            left: 50%;
+            min-width: 100%;
+            min-height: 100%;
+            width: auto;
+            height: auto;
+            z-index: -100; /* Sits behind all content */
+            transform: translateX(-50%) translateY(-50%);
+            background-size: cover;
+            opacity: 0.9; /* Slightly dim the video to make text pop */
+        }
+
+        /* --- 3. Main Content Container --- */
+        .container {
+            max-width: 900px;
+            margin: 2rem auto; /* Centers the box */
+            padding: 2.5rem;
+            /* Semi-transparent white background */
+            background-color: rgba(255, 255, 255, 0.94); 
+            border-radius: 12px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.15);
+        }
+
+        /* --- 4. Typography & Headings --- */
+        h1, h2 {
+            text-align: center;
+            margin-bottom: 1.5rem;
+            font-weight: 600;
+        }
+        h1 {
+            font-size: 2.5rem;
+            color: #c94c4c; /* A nice red-ish accent */
+        }
+        h2 {
+            font-size: 2rem;
+            color: #0056b3; /* A strong blue */
+            border-bottom: 2px solid #eee;
+            padding-bottom: 0.5rem;
+        }
+        p, li {
+            font-size: 1.05rem;
+            margin-bottom: 0.75rem;
+        }
+
+        /* --- 5. Services Section (Pricing) --- */
+        .services-list {
+            list-style: none;
+            padding: 0;
+        }
+        .services-list li {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 1rem 0.5rem;
+            border-bottom: 1px dashed #ccc;
+            font-size: 1.1rem;
+        }
+        .services-list li:last-child {
+            border-bottom: none;
+        }
+        .services-list .price {
+            font-weight: 600;
+            color: #28a745; /* Green for prices */
+            font-size: 1.15rem;
+            background-color: #f4f4f4;
+            padding: 5px 10px;
+            border-radius: 5px;
+            min-width: 80px;
+            text-align: right;
+        }
+
+        /* --- 6. "How It Works" Section (Special Note) --- */
+        #how-it-works {
+            text-align: center;
+            background-color: #fffbef; /* A light cream background */
+            padding: 1.5rem 2rem;
+            border-radius: 8px;
+            margin-top: 2rem;
+            border: 1px solid #f0e6c6;
+        }
+        #how-it-works ul {
+            list-style-type: '✅'; /* Emoji list style */
+            padding-left: 1.5rem;
+            text-align: left;
+            display: inline-block;
+            margin: 0 auto;
+        }
+        #how-it-works li {
+            padding-left: 0.75rem;
+        }
+        .highlight {
+            font-weight: 700;
+            color: #d9534f; /* Red highlight */
+        }
+        .sub-highlight {
+            font-weight: 600;
+            color: #333;
+        }
+
+        /* --- 7. Gallery Section --- */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr; /* Two columns */
+            gap: 1.5rem;
+            margin-top: 1rem;
+        }
+        .gallery-grid img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            transition: transform 0.3s ease;
+            border: 3px solid white;
+        }
+        .gallery-grid img:hover {
+            transform: scale(1.03); /* Slight zoom on hover */
+        }
+
+        /* --- 8. Contact (WhatsApp Button) --- */
+        #contact {
+            text-align: center;
+            margin-top: 2.5rem;
+        }
+        .cta-button {
+            display: inline-block;
+            background-color: #25D366; /* WhatsApp Green */
+            color: #ffffff;
+            padding: 1rem 2.5rem;
+            font-size: 1.25rem;
+            font-weight: 700;
+            text-decoration: none;
+            border-radius: 50px;
+            transition: all 0.3s ease;
+            box-shadow: 0 4px 15px rgba(37, 211, 102, 0.4);
+        }
+        .cta-button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 7px 20px rgba(37, 211, 102, 0.6);
+        }
+        .contact-number {
+            font-size: 1.2rem;
+            font-weight: 600;
+            margin-top: 1.5rem;
+            color: #555;
+        }
+
+        /* --- 9. Responsive Design (for Mobile) --- */
+        @media (max-width: 768px) {
+            body {
+                -webkit-text-size-adjust: 100%;
+            }
+            .container {
+                margin: 1rem;
+                padding: 1.5rem;
+            }
+            .gallery-grid {
+                grid-template-columns: 1fr; /* Stack gallery images */
+            }
+            h1 {
+                font-size: 2rem;
+            }
+            h2 {
+                font-size: 1.75rem;
+            }
+            .services-list li {
+                flex-direction: column;
+                align-items: flex-start;
+                gap: 0.5rem;
+            }
+            .services-list .price {
+                align-self: flex-start;
+                margin-top: 5px;
+            }
+            .cta-button {
+                padding: 0.8rem 2rem;
+                font-size: 1.1rem;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <video id="video-bg" autoplay loop muted playsinline>
+        <source src="https://videos.pexels.com/video-files/3843431/3843431-hd_1920_1080_25fps.mp4" type="video/mp4">
+        Your browser does not support the video tag.
+    </video>
+
+    <div class="container">
+
+        <header>
+            <h1>🧵 Lakshmi Stitching Center 🧵</h1>
+            <p style="text-align: center; font-size: 1.2rem; font-style: italic; margin-top: -1rem; margin-bottom: 2rem;">
+                Your personal tailor, right at your doorstep.
+            </p>
+        </header>
+
+        <section id="how-it-works">
+            <h2>How It Works</h2>
+            <ul>
+                <li>Your cloth material will be <span class="sub-highlight">picked up from your home</span> by our staff.</li>
+                <li>Your <span class="highlight">first pick-up is absolutely FREE!</span> 🥳</li>
+            </ul>
+            <p style="margin-top: 1.5rem;">
+                We guarantee <span class="sub-highlight">fast delivery</span> and the most <span class="sub-highlight">low & reasonable prices</span> in town.
+            </p>
+        </section>
+
+        <section id="services">
+            <h2>Our Stitching Prices</h2>
+            <ul class="services-list">
+                <li>
+                    <span>Normal Blouse</span>
+                    <span class="price">₹350</span>
+                </li>
+                <li>
+                    <span>Lehenga (Starting)</span>
+                    <span class="price">₹650</span>
+                </li>
+                <li>
+                    <span>Punjabi Dress</span>
+                    <span class="price">₹450</span>
+                </li>
+                <li>
+                    <span>Kids Frock</span>
+                    <span class="price">₹500</span>
+                </li>
+            </ul>
+        </section>
+
+        <section id="gallery">
+            <h2>Our Work</h2>
+            <div class="gallery-grid">
+                <img src="IMG-20251023-WA0019[1].jpg" alt="White and teal dress">
+                <img src="IMG-20251023-WA0014[1].jpg" alt="Yellow and blue dress">
+            </div>
+        </section>
+
+        <section id="contact">
+            <h2>Get Started Today!</h2>
+            <p>Ready to get your perfect fit? Send us a message on WhatsApp!</p>
+            
+            <a href="https://wa.me/918639299665" target="_blank" class="cta-button">
+                Chat on WhatsApp
+            </a>
+            <p class="contact-number">
+                Or call: +91 86392 99665
+            </p>
+        </section>
+
+    </div> </body>
+</html>
